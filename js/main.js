@@ -7,10 +7,11 @@ import { Buildings } from './views/buildings.js';
 import { Workers } from './views/workers.js';
 import { Reports } from './views/reports.js';
 import { Issues } from './views/issues.js';
+import { Invoices } from './views/invoices.js';
 import { Company } from './views/company.js';
 import { Templates } from './views/templates.js';
 
-const VIEWS = ['overview', 'buildings', 'workers', 'reports', 'issues', 'templates', 'company'];
+const VIEWS = ['overview', 'buildings', 'workers', 'reports', 'invoices', 'issues', 'templates', 'company'];
 const REFRESH_MS = 60000;
 
 function monthRange(ym) {
@@ -167,7 +168,7 @@ function App() {
   };
   const ctx = { cloud, data, reload, t, lang, notify, handleCas, run, month, setMonth, setView,
     actor: data?.company?.ownerName?.trim() || t('common.manager') };
-  const View = { overview: Overview, buildings: Buildings, workers: Workers, reports: Reports, issues: Issues, company: Company, templates: Templates }[view];
+  const View = { overview: Overview, buildings: Buildings, workers: Workers, reports: Reports, invoices: Invoices, issues: Issues, company: Company, templates: Templates }[view];
 
   return html`<div class="app">
     <nav class="side">

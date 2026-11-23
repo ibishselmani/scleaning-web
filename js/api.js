@@ -1,6 +1,7 @@
 // Talks to the company's own Supabase project with the same REST/RPC calls the app uses.
 // No server of our own: the browser calls Supabase directly; row-level security on the server decides access.
 import { normalizeUrl } from './model.js';
+import { pickCloudBook } from './billing.js';
 
 export const BUCKET = 'scleaning-proofs';
 const CFG_KEY = 'scleaning.web.project';
@@ -208,6 +209,45 @@ export class Cloud {
     const filter = pendingOnly ? 'verification_status=eq.PENDING_REVIEW' : `created_at=gte.${fromMs}&created_at=lt.${toMs}`;
     const rows = await this.getAll('sc_reports', `${filter}&select=payload,updated_at&order=created_at.desc,id.asc`, 300);
     return rows.map((r) => ({ ...r.payload, cloudUpdatedAtMs: r.updated_at }));
+  }
+
+  // ---------- Invoices (manager-only billing book, two cloud copies like the app) ----------
+  billingPath() {
+    return `${this.companyId || 'default'}/reports/__manager_billing__/billing.json`.split('/').map(encodeURIComponent).join('/');
+  }
+  /** Returns {row, book, safeToWrite}; `book` is null when the phone never synced invoices. */
+  async loadBilling() {
+    const missing = (e) => e.status === 404 || e.status === 400 || e.code === '42P01' || e.code === 'PGRST205';
+    const [rows, storageBook] = await Promise.all([
+      this.req('GET', `/rest/v1/sc_billing?company_id=eq.${this.cid()}&select=payload,updated_at&limit=1`).catch((e) => { if (missing(e)) return []; throw e; }),
+      this.req('GET', `/storage/v1/object/authenticated/${BUCKET}/${this.billingPath()}`).catch((e) => { if (missing(e)) return null; throw e; }),
+    ]);
+    const row = rows?.[0] || null;
+    return { row, ...pickCloudBook(row, storageBook && typeof storageBook === 'object' ? storageBook : null) };
+  }
+  /**
+   * Writes a changed book only if nobody saved the table copy since `row` was read (compare-and-set on
+   * updated_at); then refreshes the storage copy like the app's push. Returns 'ok' or 'conflict'.
+   */
+  async saveBilling(book, row) {
+    const ts = Math.max(Date.now(), book.updatedAtMs || 0);
+    const stamped = { ...book, updatedAtMs: ts };
+    const body = { payload: stamped, updated_at: ts, last_op_id: opId('web-bill', 'book') };
+    if (row) {
+      const res = await this.req('PATCH', `/rest/v1/sc_billing?company_id=eq.${this.cid()}&updated_at=eq.${row.updated_at}&select=updated_at`,
+        { body, prefer: 'return=representation' });
+      if (!Array.isArray(res) || res.length === 0) return 'conflict';
+    } else {
+      try {
+        await this.req('POST', '/rest/v1/sc_billing', { body: { company_id: this.companyId || 'default', ...body }, prefer: 'return=minimal' });
+      } catch (e) {
+        if (e.status === 409) return 'conflict';
+        throw e;
+      }
+    }
+    // The table copy is newer now; a failed storage refresh is healed by the phone's next merge.
+    await this.req('POST', `/storage/v1/object/${BUCKET}/${this.billingPath()}`, { body: stamped, headers: { 'x-upsert': 'true' } }).catch(() => {});
+    return 'ok';
   }
 
   // ---------- Files ----------
