@@ -1,7 +1,7 @@
 // Talks to the company's own Supabase project with the same REST/RPC calls the app uses.
 // No server of our own: the browser calls Supabase directly; row-level security on the server decides access.
-import { normalizeUrl } from './model.js';
-import { pickCloudBook } from './billing.js';
+import { normalizeUrl } from './model.js?v=70853fc885';
+import { pickCloudBook } from './billing.js?v=70853fc885';
 
 export const BUCKET = 'scleaning-proofs';
 const CFG_KEY = 'scleaning.web.project';

@@ -1,8 +1,8 @@
 // Checklist editor shared by buildings and templates.
-import { useState } from '../../vendor/preact-htm.module.js';
-import { html, Input, Select } from '../ui.js';
-import { taskText, newTask } from '../model.js';
-import { useAppData } from '../data.js';
+import { useState } from '../../vendor/preact-htm.module.js?v=70853fc885';
+import { html, Input, Select } from '../ui.js?v=70853fc885';
+import { taskText, newTask } from '../model.js?v=70853fc885';
+import { useAppData } from '../data.js?v=70853fc885';
 
 export function TaskEditor({ tasks, onChange, t, lang }) {
   const appData = useAppData();
