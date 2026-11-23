@@ -1,6 +1,6 @@
-import { useState } from '../../vendor/preact-htm.module.js?v=70853fc885';
-import { html, Field, Input, TextArea, Select, Modal, Pill } from '../ui.js?v=70853fc885';
-import { newIssue, applyIssueUpdate } from '../model.js?v=70853fc885';
+import { useState } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, Field, Input, TextArea, Select, Modal, Pill } from '../ui.js?v=30db8cbe75';
+import { newIssue, applyIssueUpdate } from '../model.js?v=30db8cbe75';
 
 const KIND = { OPEN: 'warn', IN_PROGRESS: 'info', RESOLVED: 'ok' };
 

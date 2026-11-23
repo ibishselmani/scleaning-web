@@ -1,6 +1,6 @@
-import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=70853fc885';
-import { html, Field, Input, TextArea, Select, Toggle, imageFileToBase64, logoSrc } from '../ui.js?v=70853fc885';
-import { publicCompany, hashManagerPassword, MIN_MANAGER_PASSWORD_LENGTH } from '../model.js?v=70853fc885';
+import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, Field, Input, TextArea, Select, Toggle, imageFileToBase64, logoSrc } from '../ui.js?v=30db8cbe75';
+import { publicCompany, hashManagerPassword, MIN_MANAGER_PASSWORD_LENGTH } from '../model.js?v=30db8cbe75';
 
 /** Saves the whole company profile (templates included) against the revision it was loaded with. */
 export async function saveCompanyProfile(ctx, profile, okText, ownerPinHash = '', expected = ctx.data.company.updatedAtMs || 0) {

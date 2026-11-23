@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from '../../vendor/preact-htm.module.js?v=70853fc885';
-import { html, Field, Input, TextArea, Select, Toggle, Modal, QrCode, usePrint, logoSrc } from '../ui.js?v=70853fc885';
+import { useState, useEffect, useRef } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, Field, Input, TextArea, Select, Toggle, Modal, QrCode, usePrint, logoSrc } from '../ui.js?v=30db8cbe75';
 import {
   newBuilding, applyBuildingEdit, nextUniqueQrCode, findQrConflict, isRetired, instantiateTasks, normalizeQr, visitsPerDay,
-} from '../model.js?v=70853fc885';
-import { TaskEditor } from './tasks.js?v=70853fc885';
-import { useAppData } from '../data.js?v=70853fc885';
+} from '../model.js?v=30db8cbe75';
+import { TaskEditor } from './tasks.js?v=30db8cbe75';
+import { useAppData } from '../data.js?v=30db8cbe75';
 
 const DAYS = [1, 2, 3, 4, 5, 6, 7];
 const TIME = /^([01]?\d|2[0-3]):[0-5]\d$/;

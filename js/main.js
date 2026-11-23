@@ -1,15 +1,15 @@
-import { render, useState, useEffect, useCallback, useMemo } from '../vendor/preact-htm.module.js?v=70853fc885';
-import { html, Field, Input, Toggle, Select } from './ui.js?v=70853fc885';
-import { Cloud, loadProjectConfig, saveProjectConfig } from './api.js?v=70853fc885';
-import { makeT, LANGS, savedLang, saveLang } from './i18n.js?v=70853fc885';
-import { Overview } from './views/overview.js?v=70853fc885';
-import { Buildings } from './views/buildings.js?v=70853fc885';
-import { Workers } from './views/workers.js?v=70853fc885';
-import { Reports } from './views/reports.js?v=70853fc885';
-import { Issues } from './views/issues.js?v=70853fc885';
-import { Invoices } from './views/invoices.js?v=70853fc885';
-import { Company } from './views/company.js?v=70853fc885';
-import { Templates } from './views/templates.js?v=70853fc885';
+import { render, useState, useEffect, useCallback, useMemo } from '../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, Field, Input, Toggle, Select } from './ui.js?v=30db8cbe75';
+import { Cloud, loadProjectConfig, saveProjectConfig } from './api.js?v=30db8cbe75';
+import { makeT, LANGS, savedLang, saveLang } from './i18n.js?v=30db8cbe75';
+import { Overview } from './views/overview.js?v=30db8cbe75';
+import { Buildings } from './views/buildings.js?v=30db8cbe75';
+import { Workers } from './views/workers.js?v=30db8cbe75';
+import { Reports } from './views/reports.js?v=30db8cbe75';
+import { Issues } from './views/issues.js?v=30db8cbe75';
+import { Invoices } from './views/invoices.js?v=30db8cbe75';
+import { Company } from './views/company.js?v=30db8cbe75';
+import { Templates } from './views/templates.js?v=30db8cbe75';
 
 const VIEWS = ['overview', 'buildings', 'workers', 'reports', 'invoices', 'issues', 'templates', 'company'];
 const REFRESH_MS = 60000;

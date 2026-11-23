@@ -1,7 +1,7 @@
-import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=70853fc885';
-import { html, Field, Select, TextArea, Pill, usePrint, downloadText, logoSrc } from '../ui.js?v=70853fc885';
-import { reviewFields, parseGps, csvEscape } from '../model.js?v=70853fc885';
-import { useAppData } from '../data.js?v=70853fc885';
+import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, Field, Select, TextArea, Pill, usePrint, downloadText, logoSrc } from '../ui.js?v=30db8cbe75';
+import { reviewFields, parseGps, csvEscape } from '../model.js?v=30db8cbe75';
+import { useAppData } from '../data.js?v=30db8cbe75';
 
 const STATUS_KIND = { PENDING_REVIEW: 'warn', VERIFIED: 'ok', FLAGGED: 'bad' };
 const fmtDur = (m) => `${Math.floor((m || 0) / 60)} h ${String((m || 0) % 60).padStart(2, '0')}`;
