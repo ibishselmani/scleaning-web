@@ -1,0 +1,563 @@
+{
+    "taskLibrary": [
+        {
+            "id": "lib-desks",
+            "areaDe": "Empfang & Büroräume",
+            "areaTranslations": {
+                "de": "Empfang & Büroräume",
+                "en": "Reception & Offices",
+                "pl": "Recepcja i biura",
+                "ro": "Recepție și birouri",
+                "sq": "Recepsioni dhe zyrat",
+                "tr": "Resepsiyon ve Ofisler",
+                "uk": "Рецепція та офіси",
+                "es": "Recepción y oficinas",
+                "ru": "Ресепшн и офисы",
+                "ar": "الاستقبال والمكاتب"
+            },
+            "labelDe": "Schreibtische, Empfangstresen und Fensterbänke feucht abwischen",
+            "labelTranslations": {
+                "de": "Schreibtische, Empfangstresen und Fensterbänke feucht abwischen",
+                "en": "Damp-wipe desks, reception counter, and windowsills",
+                "pl": "Przetrzeć na wilgotno biurka, ladę recepcyjną i parapety",
+                "ro": "Ștergeți umed birourile, tejgheaua de recepție și pervazurile",
+                "sq": "Fshini me leckë të lagur tavolinat, banakun dhe pragjet e dritareve",
+                "tr": "Çalışma masalarını, resepsiyon bankosunu ve pencere pervazlarını nemli silin",
+                "uk": "Протерти вологою серветкою столи, стійку рецепції та підвіконня",
+                "es": "Limpiar en húmedo escritorios, mostrador y alféizares",
+                "ru": "Протереть влажной салфеткой столы, стойку ресепшн и подоконники",
+                "ar": "مسح المكاتب وطاولة الاستقبال وعتبات النوافذ بقطعة قماش مبللة"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-trash",
+            "areaDe": "Empfang & Büroräume",
+            "areaTranslations": {
+                "de": "Empfang & Büroräume",
+                "en": "Reception & Offices",
+                "pl": "Recepcja i biura",
+                "ro": "Recepție și birouri",
+                "sq": "Recepsioni dhe zyrat",
+                "tr": "Resepsiyon ve Ofisler",
+                "uk": "Рецепція та офіси",
+                "es": "Recepción y oficinas",
+                "ru": "Ресепшн и офисы",
+                "ar": "الاستقبال والمكاتب"
+            },
+            "labelDe": "Papierkörbe und Restmüllbehälter leeren sowie Müllbeutel ersetzen",
+            "labelTranslations": {
+                "de": "Papierkörbe und Restmüllbehälter leeren sowie Müllbeutel ersetzen",
+                "en": "Empty wastebaskets and trash bins and replace liners",
+                "pl": "Opróżnić kosze na śmieci i wymienić worki",
+                "ro": "Goliți coșurile de gunoi și înlocuiți sacii menajeri",
+                "sq": "Zbrazi koshat e mbeturinave dhe ndërroni qeset",
+                "tr": "Çöp kutularını boşaltın ve poşetleri değiştirin",
+                "uk": "Спорожнити сміттєві кошики та замінити пакети",
+                "es": "Vaciar papeleras y cubos de basura y cambiar las bolsas",
+                "ru": "Опустошить мусорные корзины и заменить пакеты",
+                "ar": "إفراغ سلال المهملات واستبدال أكياس القمامة"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-floors",
+            "areaDe": "Empfang & Büroräume",
+            "areaTranslations": {
+                "de": "Empfang & Büroräume",
+                "en": "Reception & Offices",
+                "pl": "Recepcja i biura",
+                "ro": "Recepție și birouri",
+                "sq": "Recepsioni dhe zyrat",
+                "tr": "Resepsiyon ve Ofisler",
+                "uk": "Рецепція та офіси",
+                "es": "Recepción y oficinas",
+                "ru": "Ресепшн и офисы",
+                "ar": "الاستقبال والمكاتب"
+            },
+            "labelDe": "Teppichböden gründlich saugen und Hartböden nebelfeucht wischen",
+            "labelTranslations": {
+                "de": "Teppichböden gründlich saugen und Hartböden nebelfeucht wischen",
+                "en": "Vacuum carpets thoroughly and damp-mop hard floors",
+                "pl": "Dokładnie odkurzyć wykładziny i umyć podłogi twarde",
+                "ro": "Aspirați temeinic mochetele și spălați podelele dure",
+                "sq": "Fshini me fshesë me korrent tapetet dhe lani dyshemetë e forta",
+                "tr": "Halıları iyice süpürün ve sert zeminleri paspaslayın",
+                "uk": "Ретельно пропилососити килими та помити тверду підлогу",
+                "es": "Aspirar a fondo moquetas y fregar suelos duros",
+                "ru": "Тщательно пропылесосить ковры и вымыть твердые полы",
+                "ar": "تنظيف السجاد بالمكنسة الكهربائية ومسح الأرضيات الصلبة"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-wc-disinfect",
+            "areaDe": "Sanitäranlagen (Damen & Herren)",
+            "areaTranslations": {
+                "de": "Sanitäranlagen (Damen & Herren)",
+                "en": "Restrooms (Ladies & Gents)",
+                "pl": "Toalety (Damska i Męska)",
+                "ro": "Grupuri sanitare (Femei & Bărbați)",
+                "sq": "Tualetet (Gratë dhe Burrat)",
+                "tr": "Tuvaletler (Kadın & Erkek)",
+                "uk": "Санвузли (Жіночий та Чоловічий)",
+                "es": "Aseos (Damas y Caballeros)",
+                "ru": "Санузлы (Женский и Мужской)",
+                "ar": "دورات المياه (نساء ورجال)"
+            },
+            "labelDe": "WC-Becken, Urinale, Waschbecken und Armaturen entkalken & desinfizieren",
+            "labelTranslations": {
+                "de": "WC-Becken, Urinale, Waschbecken und Armaturen entkalken & desinfizieren",
+                "en": "Descale and disinfect toilets, urinals, sinks, and faucets",
+                "pl": "Odkamienić i zdezynfekować toalety, pisuary, umywalki oraz baterie",
+                "ro": "Detartrați și dezinfectați toaletele, pisoarele, chiuvetele și bateriile",
+                "sq": "Pastroni nga gëlqerja dhe dezinfektoni tualetet, lavamanët dhe rubinetat",
+                "tr": "Klozetleri, pisuvarları, lavaboları ve bataryaları dezenfekte edin",
+                "uk": "Видалити наліт і продезінфікувати унітази, раковини та змішувачі",
+                "es": "Descalcificar y desinfectar inodoros, urinarios, lavabos y grifería",
+                "ru": "Удалить налет и продезинфицировать унитазы, раковины и смесители",
+                "ar": "إزالة الكلس وتطهير المراحيض والمغاسل والصنابير"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-wc-mirrors",
+            "areaDe": "Sanitäranlagen (Damen & Herren)",
+            "areaTranslations": {
+                "de": "Sanitäranlagen (Damen & Herren)",
+                "en": "Restrooms (Ladies & Gents)",
+                "pl": "Toalety (Damska i Męska)",
+                "ro": "Grupuri sanitare (Femei & Bărbați)",
+                "sq": "Tualetet (Gratë dhe Burrat)",
+                "tr": "Tuvaletler (Kadın & Erkek)",
+                "uk": "Санвузли (Жіночий та Чоловічий)",
+                "es": "Aseos (Damas y Caballeros)",
+                "ru": "Санузлы (Женский и Мужской)",
+                "ar": "دورات المياه (نساء ورجال)"
+            },
+            "labelDe": "Spiegel streifenfrei polieren und Verbrauchsmaterial (Seife, Papier) auffüllen",
+            "labelTranslations": {
+                "de": "Spiegel streifenfrei polieren und Verbrauchsmaterial (Seife, Papier) auffüllen",
+                "en": "Polish mirrors streak-free and restock soap and paper supplies",
+                "pl": "Wypolerować lustra bez smug i uzupełnić mydło oraz papier",
+                "ro": "Lustruiți oglinzile fără urme și completați săpunul și hârtia",
+                "sq": "Pastroni pasqyrat pa shenja dhe mbushni sapunin e letrën",
+                "tr": "Aynaları iz bırakmadan silin; sabun ve kağıt malzemeyi tamamlayın",
+                "uk": "Натерти дзеркала без розводів та поповнити мило й папір",
+                "es": "Limpiar espejos sin marcas y reponer jabón y papel",
+                "ru": "Натереть зеркала без разводов и пополнить мыло и бумагу",
+                "ar": "تلميع المرايا بدون آثار وإعادة تعبئة الصابون والمناديل"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-kitchen",
+            "areaDe": "Teeküche & Pausenraum",
+            "areaTranslations": {
+                "de": "Teeküche & Pausenraum",
+                "en": "Kitchenette & Break Room",
+                "pl": "Kuchnia i pokój socjalny",
+                "ro": "Bucătărie și sală de mese",
+                "sq": "Kuzhina dhe dhoma e pushimit",
+                "tr": "Mutfak ve Dinlenme Odası",
+                "uk": "Кухня та кімната відпочинку",
+                "es": "Cocina y sala de descanso",
+                "ru": "Кухня и комната отдыха",
+                "ar": "المطبخ وغرفة الاستراحة"
+            },
+            "labelDe": "Arbeitsflächen, Spülbecken und Esstische hygienisch reinigen, Geschirrspüler prüfen",
+            "labelTranslations": {
+                "de": "Arbeitsflächen, Spülbecken und Esstische hygienisch reinigen, Geschirrspüler prüfen",
+                "en": "Clean countertops, sink, and tables hygienically; check dishwasher",
+                "pl": "Umyć higienicznie blaty, zlew i stoły; sprawdzić zmywarkę",
+                "ro": "Curățați igienic blaturile, chiuveta și mesele; verificați mașina de spălat vase",
+                "sq": "Pastroni banakun, lavamanin dhe tavolinat; kontrolloni lavastoviljen",
+                "tr": "Tezgahları, eviyeyi ve masaları temizleyin; bulaşık makinesini kontrol edin",
+                "uk": "Очистити стільниці, мийку та столи; перевірити посудомийну машину",
+                "es": "Limpiar encimeras, fregadero y mesas; revisar el lavavajillas",
+                "ru": "Очистить столешницы, раковину и столы; проверить посудомойку",
+                "ar": "تنظيف الأسطح والحوض والطاولات وفحص غسالة الصحون"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-touchpoints",
+            "areaDe": "Kontaktflächen & Hygiene",
+            "areaTranslations": {
+                "de": "Kontaktflächen & Hygiene",
+                "en": "Touchpoints & Hygiene",
+                "pl": "Powierzchnie dotykowe i higiena",
+                "ro": "Suprafețe de contact și igienă",
+                "sq": "Sipërfaqet e prekjes dhe higjiena",
+                "tr": "Temas Yüzeyleri ve Hijyen",
+                "uk": "Контактні поверхні та гігієна",
+                "es": "Superficies de contacto e higiene",
+                "ru": "Контактные поверхности и гигиена",
+                "ar": "الأسطح الملامسة والنظافة الصحية"
+            },
+            "labelDe": "Türklinken, Lichtschalter, Handläufe und Aufzugtaster desinfizieren",
+            "labelTranslations": {
+                "de": "Türklinken, Lichtschalter, Handläufe und Aufzugtaster desinfizieren",
+                "en": "Disinfect door handles, light switches, handrails, and elevator buttons",
+                "pl": "Zdezynfekować klamki, włączniki światła, poręcze i przyciski windy",
+                "ro": "Dezinfectați clanțele, întrerupătoarele, balustradele și butoanele liftului",
+                "sq": "Dezinfektoni dorezat, çelësat e dritës, parmakët dhe butonat e ashensorit",
+                "tr": "Kapı kolları, düğmeler, tırabzanlar ve asansör tuşlarını dezenfekte edin",
+                "uk": "Продезінфікувати ручки, вимикачі, поручні та кнопки ліфта",
+                "es": "Desinfectar pomos, interruptores, pasamanos y botones del ascensor",
+                "ru": "Продезинфицировать ручки, выключатели, перила и кнопки лифта",
+                "ar": "تعقيم مقابض الأبواب ومفاتيح الإضاءة والدرابزين وأزرار المصعد"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-stairs",
+            "areaDe": "Treppenhaus & Flure",
+            "areaTranslations": {
+                "de": "Treppenhaus & Flure",
+                "en": "Stairwell & Hallways",
+                "pl": "Klatka schodowa i korytarze",
+                "ro": "Casa scării și holuri",
+                "sq": "Shkallët dhe korridoret",
+                "tr": "Merdiven ve Koridorlar",
+                "uk": "Сходова клітка та коридори",
+                "es": "Escalera y pasillos",
+                "ru": "Лестничная клетка и коридоры",
+                "ar": "الدرج والممرات"
+            },
+            "labelDe": "Treppenstufen und Podeste kehren und feucht wischen, Fußmatten ausschütteln",
+            "labelTranslations": {
+                "de": "Treppenstufen und Podeste kehren und feucht wischen, Fußmatten ausschütteln",
+                "en": "Sweep and damp-mop stairs and landings, shake out entrance mats",
+                "pl": "Zamieść i umyć schody oraz podesty, wytrzepać wycieraczki",
+                "ro": "Măturați și spălați treptele și palierele, scuturați covorașele",
+                "sq": "Fshini dhe lani shkallët e sheshpushimet, shkundni tapetet e hyrjes",
+                "tr": "Merdiven basamaklarını ve sahanlıkları süpürüp paspaslayın",
+                "uk": "Підмести та помити сходи й майданчики, витрусити килимки",
+                "es": "Barrer y fregar escalones y rellanos, sacudir felpudos",
+                "ru": "Подмести и вымыть ступени и площадки, вытряхнуть коврики",
+                "ar": "كنس ومسح الدرج والمنصات ونفض ممسحة المدخل"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-glass-entrance",
+            "areaDe": "Eingangsbereich & Aufzug",
+            "areaTranslations": {
+                "de": "Eingangsbereich & Aufzug",
+                "en": "Entrance & Elevator",
+                "pl": "Wejście i winda",
+                "ro": "Intrare și lift",
+                "sq": "Hyrja dhe ashensori",
+                "tr": "Giriş Alanı ve Asansör",
+                "uk": "Вхідна зона та ліфт",
+                "es": "Entrada y ascensor",
+                "ru": "Входная зона и лифт",
+                "ar": "المدخل والمصعد"
+            },
+            "labelDe": "Eingangsverglasung, Briefkastenanlage und Aufzugsspiegel griffspurenfrei reinigen",
+            "labelTranslations": {
+                "de": "Eingangsverglasung, Briefkastenanlage und Aufzugsspiegel griffspurenfrei reinigen",
+                "en": "Clean entrance glass doors, mailboxes, and elevator mirror smudge-free",
+                "pl": "Umyć przeszklenia wejściowe, skrzynki pocztowe i lustro w windzie",
+                "ro": "Curățați geamul intrării, cutiile poștale și oglinda liftului fără urme",
+                "sq": "Pastroni xhamat e hyrjes, kutitë postare dhe pasqyrën e ashensorit",
+                "tr": "Giriş camlarını, posta kutularını ve asansör aynasını lekesiz silin",
+                "uk": "Очистити скло на вході, поштові скриньки та дзеркало ліфта",
+                "es": "Limpiar cristales de entrada, buzones y espejo del ascensor",
+                "ru": "Очистить входные стекла, почтовые ящики и зеркало в лифте",
+                "ar": "تنظيف زجاج المدخل وصناديق البريد ومرآة المصعد دون آثار"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-clinic-floor",
+            "areaDe": "Behandlungsräume",
+            "areaTranslations": {
+                "de": "Behandlungsräume",
+                "en": "Treatment Rooms",
+                "pl": "Gabinety zabiegowe",
+                "ro": "Cabinete medicale",
+                "sq": "Dhomat e trajtimit",
+                "tr": "Muayene Odaları",
+                "uk": "Процедурні кабінети",
+                "es": "Consultas médicas",
+                "ru": "Процедурные кабинеты",
+                "ar": "غرف الفحص والعلاج"
+            },
+            "labelDe": "Praxisböden mit VAH-gelistetem Desinfektionsreiniger im Zweistufen-Wischverfahren reinigen",
+            "labelTranslations": {
+                "de": "Praxisböden mit VAH-gelistetem Desinfektionsreiniger im Zweistufen-Wischverfahren reinigen",
+                "en": "Mop clinic floors with VAH-certified disinfectant using two-bucket method",
+                "pl": "Umyć podłogi środkiem dezynfekującym VAH metodą dwustopniową",
+                "ro": "Spălați podelele cabinetului cu dezinfectant certificat VAH",
+                "sq": "Lani dyshemetë e klinikës me dezinfektues të certifikuar VAH",
+                "tr": "Klinik zeminlerini VAH onaylı dezenfektan ile çift kova yöntemiyle silin",
+                "uk": "Вимити підлогу кабінетів дезінфікуючим засобом VAH",
+                "es": "Fregar suelos de consulta con desinfectante certificado VAH",
+                "ru": "Вымыть полы кабинетов дезинфицирующим средством VAH",
+                "ar": "مسح أرضيات العيادة بمطهر معتمد بطريقة الدلوين"
+            },
+            "required": true
+        },
+        {
+            "id": "lib-conference",
+            "areaDe": "Konferenz- & Besprechungsräume",
+            "areaTranslations": {
+                "de": "Konferenz- & Besprechungsräume",
+                "en": "Conference & Meeting Rooms",
+                "pl": "Sale konferencyjne",
+                "ro": "Săli de conferință",
+                "sq": "Sallat e mbledhjeve",
+                "tr": "Toplantı Odaları",
+                "uk": "Конференц-зали",
+                "es": "Salas de reuniones",
+                "ru": "Конференц-залы",
+                "ar": "قاعات الاجتماعات"
+            },
+            "labelDe": "Konferenztische reinigen, Stühle ausrichten und Glastrennwände von Griffspuren befreien",
+            "labelTranslations": {
+                "de": "Konferenztische reinigen, Stühle ausrichten und Glastrennwände von Griffspuren befreien",
+                "en": "Clean conference tables, align chairs, and remove smudges from glass partitions",
+                "pl": "Wyczyścić stoły konferencyjne, ustawić krzesła i umyć szklane ścianki",
+                "ro": "Curățați mesele de conferință, aranjați scaunele și ștergeți pereții de sticlă",
+                "sq": "Pastroni tavolinat e mbledhjeve, rregulloni karriget dhe fshini xhamat",
+                "tr": "Toplantı masalarını silin, sandalyeleri düzenleyin ve cam bölmeleri temizleyin",
+                "uk": "Очистити конференц-столи, вирівняти стільці та протерти скляні перегородки",
+                "es": "Limpiar mesas de juntas, alinear sillas y limpiar mamparas de cristal",
+                "ru": "Очистить столы для переговоров, выровнять стулья и протереть стеклянные перегородки",
+                "ar": "تنظيف طاولات الاجتماعات وترتيب الكراسي ومسح الفواصل الزجاجية"
+            },
+            "required": false
+        },
+        {
+            "id": "lib-lock-check",
+            "areaDe": "Gebäudecheck & Verschluss",
+            "areaTranslations": {
+                "de": "Gebäudecheck & Verschluss",
+                "en": "Closing & Security Check",
+                "pl": "Kontrola zamknięcia obiektu",
+                "ro": "Verificare închidere clădire",
+                "sq": "Kontrolli i mbylljes së ndërtesës",
+                "tr": "Bina Kapanış ve Güvenlik Kontrolü",
+                "uk": "Перевірка закриття будівлі",
+                "es": "Control de cierre y seguridad",
+                "ru": "Проверка закрытия здания",
+                "ar": "فحص الإغلاق والأمان"
+            },
+            "labelDe": "Fenster schließen, Licht ausschalten und Eingangstür ordnungsgemäß abschließen",
+            "labelTranslations": {
+                "de": "Fenster schließen, Licht ausschalten und Eingangstür ordnungsgemäß abschließen",
+                "en": "Close windows, switch off lights, and securely lock entrance door",
+                "pl": "Zamknąć okna, zgasić światła i dokładnie zamknąć drzwi wejściowe",
+                "ro": "Închideți ferestrele, stingeți luminile și încuiați ușa de la intrare",
+                "sq": "Mbyllni dritaret, fikni dritat dhe kyçni derën kryesore",
+                "tr": "Pencereleri kapatın, ışıkları söndürün ve giriş kapısını kilitleyin",
+                "uk": "Зачинити вікна, вимкнути світло та надійно замкнути вхідні двері",
+                "es": "Cerrar ventanas, apagar luces y cerrar con llave la puerta principal",
+                "ru": "Закрыть окна, выключить свет и надежно запереть входную дверь",
+                "ar": "إغلاق النوافذ وإطفاء الأنوار وإقفال الباب الرئيسي بإحكام"
+            },
+            "required": true
+        }
+    ],
+    "buildingTemplates": [
+        {
+            "id": "office",
+            "labels": {
+                "de": "Büro",
+                "en": "Office",
+                "sq": "Zyrë"
+            },
+            "taskIds": [
+                "lib-desks",
+                "lib-trash",
+                "lib-floors",
+                "lib-conference",
+                "lib-kitchen",
+                "lib-wc-disinfect",
+                "lib-wc-mirrors",
+                "lib-lock-check"
+            ],
+            "defaultScheduledDays": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "defaultMinPhotos": 0,
+            "defaultRequireBeforeAfter": false
+        },
+        {
+            "id": "medical",
+            "labels": {
+                "de": "Arztpraxis",
+                "en": "Clinic / Medical",
+                "sq": "Klinikë / Mjekësore"
+            },
+            "taskIds": [
+                "lib-touchpoints",
+                "lib-clinic-floor",
+                "lib-wc-disinfect",
+                "lib-wc-mirrors",
+                "lib-trash",
+                "lib-lock-check"
+            ],
+            "defaultScheduledDays": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "defaultMinPhotos": 2,
+            "defaultRequireBeforeAfter": true
+        },
+        {
+            "id": "stairs",
+            "labels": {
+                "de": "Treppenhaus",
+                "en": "Stairwell",
+                "sq": "Shkallë Pallati"
+            },
+            "taskIds": [
+                "lib-stairs",
+                "lib-glass-entrance",
+                "lib-touchpoints",
+                "lib-trash",
+                "lib-lock-check"
+            ],
+            "defaultScheduledDays": [
+                1,
+                4
+            ],
+            "defaultMinPhotos": 2,
+            "defaultRequireBeforeAfter": true
+        },
+        {
+            "id": "daycare",
+            "labels": {
+                "de": "Kita & Schule",
+                "en": "Daycare / School",
+                "sq": "Kopsht & Shkollë"
+            },
+            "taskIds": [
+                "lib-touchpoints",
+                "lib-floors",
+                "lib-wc-disinfect",
+                "lib-wc-mirrors",
+                "lib-trash",
+                "lib-kitchen",
+                "lib-lock-check"
+            ],
+            "defaultScheduledDays": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "defaultMinPhotos": 1,
+            "defaultRequireBeforeAfter": false
+        }
+    ],
+    "quickIssues": [
+        {
+            "id": "soap_refilled",
+            "de": "Seifenspender nachgefüllt",
+            "labels": {
+                "de": "Seifenspender nachgefüllt",
+                "en": "Soap dispenser refilled",
+                "pl": "Uzupełniono dozownik mydła",
+                "ro": "Dozator săpun completat",
+                "sq": "U mbush mbajtësja e sapunit",
+                "tr": "Sabun dispanseri dolduruldu",
+                "uk": "Дозатор мила заправлено",
+                "es": "Dispensador de jabón rellenado",
+                "ru": "Дозатор мыла заправлен",
+                "ar": "تمت إعادة تعبئة موزع الصابون"
+            }
+        },
+        {
+            "id": "paper_restocked",
+            "de": "Papierhandtücher / WC-Papier aufgefüllt",
+            "labels": {
+                "de": "Papier / WC-Papier aufgefüllt",
+                "en": "Paper & toilet paper restocked",
+                "pl": "Uzupełniono papier i ręczniki",
+                "ro": "Completat hârtie / prosoape",
+                "sq": "U mbush letra e duarve / WC",
+                "tr": "Kağıt havlu / tuvalet kağıdı tamamlandı",
+                "uk": "Поповнено папір / рушники",
+                "es": "Papel y toallas repuestos",
+                "ru": "Пополнена бумага / полотенца",
+                "ar": "تمت إعادة تعبئة المناديل وورق التواليت"
+            }
+        },
+        {
+            "id": "supplies_low",
+            "de": "Verbrauchsmaterial fast leer – Nachbestellung erforderlich",
+            "labels": {
+                "de": "Material fast leer (Nachbestellung)",
+                "en": "Supplies running low (reorder)",
+                "pl": "Kończą się zapasy (zamówić)",
+                "ro": "Stoc redus (necesită comandă)",
+                "sq": "Mungon materiali (porosi e re)",
+                "tr": "Malzeme azaldı (sipariş gerekli)",
+                "uk": "Закінчуються матеріали",
+                "es": "Material casi agotado (reponer)",
+                "ru": "Заканчиваются материалы",
+                "ar": "المواد أوشكت على النفاد (إعادة طلب)"
+            }
+        },
+        {
+            "id": "damage_reported",
+            "de": "Schaden / Defekt im Objekt festgestellt (siehe Foto/Notiz)",
+            "labels": {
+                "de": "Schaden / Defekt gemeldet",
+                "en": "Damage / defect noticed",
+                "pl": "Zgłoszono uszkodzenie / usterkę",
+                "ro": "Defecțiune / daună observată",
+                "sq": "U vu re dëmtim / defekt",
+                "tr": "Hasar / arıza tespit edildi",
+                "uk": "Виявлено пошкодження / несправність",
+                "es": "Daño o avería detectada",
+                "ru": "Обнаружено повреждение / поломка",
+                "ar": "تم رصد ضرر أو عطل في الموقع"
+            }
+        },
+        {
+            "id": "no_access",
+            "de": "Teilbereich verschlossen / kein Zugang während des Einsatzes",
+            "labels": {
+                "de": "Raum verschlossen / kein Zugang",
+                "en": "Room locked / no access",
+                "pl": "Pomieszczenie zamknięte / brak dostępu",
+                "ro": "Încăpere încuiată / fără acces",
+                "sq": "Dhomë e mbyllur / pa hyrje",
+                "tr": "Oda kilitli / erişim yok",
+                "uk": "Приміщення зачинено / немає доступу",
+                "es": "Sala cerrada / sin acceso",
+                "ru": "Помещение закрыто / нет доступа",
+                "ar": "غرفة مغلقة / لا يمكن الدخول"
+            }
+        },
+        {
+            "id": "extra_clean",
+            "de": "Zusätzliche Sonderreinigung durchgeführt",
+            "labels": {
+                "de": "Sonderreinigung durchgeführt",
+                "en": "Extra special cleaning done",
+                "pl": "Wykonano dodatkowe czyszczenie",
+                "ro": "Curățenie suplimentară efectuată",
+                "sq": "U krye pastrim shtesë special",
+                "tr": "Ekstra özel temizlik yapıldı",
+                "uk": "Виконано додаткове прибирання",
+                "es": "Limpieza especial adicional",
+                "ru": "Выполнена дополнительная уборка",
+                "ar": "تم إجراء تنظيف خاص إضافي"
+            }
+        }
+    ]
+}
