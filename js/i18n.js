@@ -30,7 +30,7 @@ export const TEXTS = {
   'common.unsaved': ['Nicht gespeichert', 'Not saved', 'Pa ruajtur'],
   'common.changedElsewhere': ['Dieser Eintrag wurde inzwischen woanders geändert. Speichern würde abgelehnt.', 'This item was changed elsewhere in the meantime. Saving would be rejected.', 'Ky element u ndryshua diku tjetër ndërkohë. Ruajtja do të refuzohej.'],
   'common.loadNewest': ['Neueste Version laden', 'Load newest version', 'Ngarko versionin më të ri'],
-  saved: ['Gespeichert – die Handys übernehmen es beim nächsten Abgleich.', 'Saved – phones pick it up at their next sync.', 'U ruajt – telefonat e marrin në sinkronizimin e ardhshëm.'],
+  saved: ['Gespeichert – offene Handys übernehmen es innerhalb einer Minute.', 'Saved – open phones pick it up within a minute.', 'U ruajt – telefonat e hapur e marrin brenda një minute.'],
   deleted: ['Gelöscht.', 'Deleted.', 'U fshi.'],
 
   'login.intro': ['Melden Sie sich mit Ihrem Manager-Konto an – dasselbe wie in der App.', 'Sign in with your manager account – the same as in the app.', 'Hyni me llogarinë e menaxherit – e njëjta si në aplikacion.'],
