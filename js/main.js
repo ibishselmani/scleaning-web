@@ -13,6 +13,18 @@ import { Templates } from './views/templates.js';
 
 const VIEWS = ['overview', 'buildings', 'workers', 'reports', 'invoices', 'issues', 'templates', 'company'];
 const REFRESH_MS = 60000;
+// Simple line icons for the menu (24px grid, drawn with the text colour).
+const ICONS = {
+  overview: 'M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z',
+  buildings: 'M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16 M15 9h4a1 1 0 0 1 1 1v11 M3 21h18 M8 8h3 M8 12h3 M8 16h3',
+  workers: 'M16 20v-1.5A3.5 3.5 0 0 0 12.5 15h-5A3.5 3.5 0 0 0 4 18.5V20 M10 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M20 20v-1.5a3.5 3.5 0 0 0-2.5-3.35 M15.5 4.2a3.5 3.5 0 0 1 0 6.6',
+  reports: 'M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1z M16 5h2a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2 M9 14l2 2 4-4',
+  invoices: 'M6 3h12v18l-3-2-3 2-3-2-3 2z M9 8h6 M9 12h6 M9 16h3',
+  issues: 'M12 4 2.5 20h19z M12 10v4 M12 17h.01',
+  templates: 'M10 6h10 M10 12h10 M10 18h10 M4 6l1 1 2-2 M4 12l1 1 2-2 M4 18l1 1 2-2',
+  company: 'M4 8h16v11H4z M9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2 M4 13h16',
+};
+const NavIcon = ({ name }) => html`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d=${ICONS[name]} /></svg>`;
 
 function monthRange(ym) {
   const [y, m] = ym.split('-').map(Number);
@@ -174,7 +186,7 @@ function App() {
     <nav class="side">
       <div class="brand">S<span>Cleaning</span> Web</div>
       ${VIEWS.map((v) => html`<a href=${`#${v}`} class=${view === v ? 'on' : ''} onClick=${(e) => { e.preventDefault(); setView(v); }}>
-        ${t(`nav.${v}`)}${counts && counts[v] ? html`<span class=${v === 'issues' || v === 'reports' ? 'badge' : 'count'}>${counts[v]}</span>` : null}
+        <${NavIcon} name=${v} /><span class="lbl-nav">${t(`nav.${v}`)}</span>${counts && counts[v] ? html`<span class=${v === 'issues' || v === 'reports' ? 'badge' : 'count'}>${counts[v]}</span>` : null}
       </a>`)}
       <div class="side-foot">
         <div class="co">${data?.company?.companyName || cloud.companyName || ''}</div>

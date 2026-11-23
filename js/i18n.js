@@ -79,7 +79,9 @@ export const TEXTS = {
   saved: ['Gespeichert – offene Handys übernehmen es innerhalb einer Minute.', 'Saved – open phones pick it up within a minute.', 'U ruajt – telefonat e hapur e marrin brenda një minute.'],
   deleted: ['Gelöscht.', 'Deleted.', 'U fshi.'],
 
-  'login.intro': ['Melden Sie sich mit Ihrem Manager-Konto an – dasselbe wie in der App.', 'Sign in with your manager account – the same as in the app.', 'Hyni me llogarinë e menaxherit – e njëjta si në aplikacion.'],
+  'login.intro': ['Melden Sie sich mit Ihrem Cloud-Manager-Konto an – die E-Mail steht in der App unter Einstellungen → Cloud. Nicht das Manager-Passwort der App.',
+    'Sign in with your cloud manager account – the email is shown in the app under Settings → Cloud. Not the app\'s manager password.',
+    'Hyni me llogarinë cloud të menaxherit – email-i shfaqet në aplikacion te Cilësimet → Cloud. Jo fjalëkalimi i menaxherit në aplikacion.'],
   'login.url': ['Cloud-Adresse (Supabase Project URL)', 'Cloud address (Supabase project URL)', 'Adresa e cloud-it (Supabase Project URL)'],
   'login.urlHint': ['Wie in der App unter Einstellungen → Cloud. Steht in Supabase unter Project Settings → API.', 'Same as in the app under Settings → Cloud. Found in Supabase under Project Settings → API.', 'Si në aplikacion te Cilësimet → Cloud. Gjendet në Supabase te Project Settings → API.'],
   'login.key': ['Öffentlicher Schlüssel (anon key)', 'Public key (anon key)', 'Çelësi publik (anon key)'],
