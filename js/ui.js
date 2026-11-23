@@ -1,5 +1,5 @@
 // Small shared UI pieces. htm escapes every interpolated value, so user text can never inject HTML.
-import { html, useState, useEffect, useRef } from '../vendor/preact-htm.module.js?v=30db8cbe75';
+import { html, useState, useEffect, useRef } from '../vendor/preact-htm.module.js?v=e23e5b5c61';
 
 export { html };
 

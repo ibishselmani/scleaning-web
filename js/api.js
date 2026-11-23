@@ -1,7 +1,7 @@
 // Talks to the company's own Supabase project with the same REST/RPC calls the app uses.
 // No server of our own: the browser calls Supabase directly; row-level security on the server decides access.
-import { normalizeUrl } from './model.js?v=30db8cbe75';
-import { pickCloudBook } from './billing.js?v=30db8cbe75';
+import { normalizeUrl } from './model.js?v=e23e5b5c61';
+import { pickCloudBook } from './billing.js?v=e23e5b5c61';
 
 export const BUCKET = 'scleaning-proofs';
 const CFG_KEY = 'scleaning.web.project';
@@ -35,6 +35,44 @@ export function loadProjectConfig() {
   }
   return readJson(safeStorage('localStorage'), CFG_KEY);
 }
+/**
+ * The password-reset email link returns here with `#access_token=…&type=recovery` (or `#error=…`). Reads that once
+ * and removes it from the address bar, so the token never stays in history.
+ */
+export function takeAuthRedirect() {
+  const h = new URLSearchParams(location.hash.replace(/^#/, ''));
+  if (h.get('type') === 'recovery' && h.get('access_token')) {
+    history.replaceState(null, '', location.pathname);
+    return { recoveryToken: h.get('access_token') };
+  }
+  if (h.get('error_description') || h.get('error')) {
+    history.replaceState(null, '', location.pathname);
+    return { error: h.get('error_code') || h.get('error') || 'error' };
+  }
+  return null;
+}
+
+async function authFetch(url, key, path, { method = 'POST', body, token } = {}) {
+  let res;
+  try {
+    res = await fetch(`${normalizeUrl(url)}/auth/v1/${path}`, {
+      method,
+      headers: { apikey: key, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    throw new CloudError(0, 'network');
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new CloudError(res.status, data.msg || data.error_description || data.message || `HTTP ${res.status}`, data.error_code || '');
+  return data;
+}
+/** Sends the reset email; the link leads back to this page (must be allowed under Supabase → Auth → URL Configuration). */
+export const requestPasswordReset = (cfg, email, redirectTo) =>
+  authFetch(cfg.url, cfg.key, `recover?redirect_to=${encodeURIComponent(redirectTo)}`, { body: { email: email.trim() } });
+export const setNewPassword = (cfg, token, password) =>
+  authFetch(cfg.url, cfg.key, 'user', { method: 'PUT', token, body: { password } });
+
 export function saveProjectConfig(cfg) {
   writeJson(safeStorage('localStorage'), CFG_KEY, cfg);
 }
@@ -208,6 +246,12 @@ export class Cloud {
   async loadReports({ fromMs, toMs, pendingOnly = false }) {
     const filter = pendingOnly ? 'verification_status=eq.PENDING_REVIEW' : `created_at=gte.${fromMs}&created_at=lt.${toMs}`;
     const rows = await this.getAll('sc_reports', `${filter}&select=payload,updated_at&order=created_at.desc,id.asc`, 300);
+    return rows.map((r) => ({ ...r.payload, cloudUpdatedAtMs: r.updated_at }));
+  }
+
+  /** Every report of the company (for the backup), newest first. */
+  async loadAllReports() {
+    const rows = await this.getAll('sc_reports', 'select=payload,updated_at&order=created_at.desc,id.asc', 300);
     return rows.map((r) => ({ ...r.payload, cloudUpdatedAtMs: r.updated_at }));
   }
 

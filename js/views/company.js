@@ -1,6 +1,7 @@
-import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
-import { html, Field, Input, TextArea, Select, Toggle, imageFileToBase64, logoSrc } from '../ui.js?v=30db8cbe75';
-import { publicCompany, hashManagerPassword, MIN_MANAGER_PASSWORD_LENGTH } from '../model.js?v=30db8cbe75';
+import { useState, useEffect } from '../../vendor/preact-htm.module.js?v=e23e5b5c61';
+import { html, Field, Input, TextArea, Select, Toggle, imageFileToBase64, logoSrc } from '../ui.js?v=e23e5b5c61';
+import { publicCompany, hashManagerPassword, MIN_MANAGER_PASSWORD_LENGTH } from '../model.js?v=e23e5b5c61';
+import { BackupCard } from './backup.js?v=e23e5b5c61';
 
 /** Saves the whole company profile (templates included) against the revision it was loaded with. */
 export async function saveCompanyProfile(ctx, profile, okText, ownerPinHash = '', expected = ctx.data.company.updatedAtMs || 0) {
@@ -78,6 +79,8 @@ export function Company({ ctx }) {
       </div>
       <div class="actions"><span class="grow"></span><button class="btn" disabled=${busy || !pw} onClick=${savePassword}>${t('co.setPw')}</button></div>
     </section>
+
+    <${BackupCard} ctx=${ctx} />
 
     <section class="card">
       <h2>${t('co.web')}</h2>

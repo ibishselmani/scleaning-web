@@ -1,5 +1,5 @@
-import { html, Pill } from '../ui.js?v=30db8cbe75';
-import { todayStatus, toUtcDate } from '../model.js?v=30db8cbe75';
+import { html, Pill } from '../ui.js?v=e23e5b5c61';
+import { todayStatus, toUtcDate } from '../model.js?v=e23e5b5c61';
 
 export function Overview({ ctx }) {
   const { data, t, setView, lang } = ctx;

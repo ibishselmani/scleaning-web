@@ -1,18 +1,23 @@
-import { render, useState, useEffect, useCallback, useMemo } from '../vendor/preact-htm.module.js?v=30db8cbe75';
-import { html, Field, Input, Toggle, Select } from './ui.js?v=30db8cbe75';
-import { Cloud, loadProjectConfig, saveProjectConfig } from './api.js?v=30db8cbe75';
-import { makeT, LANGS, savedLang, saveLang } from './i18n.js?v=30db8cbe75';
-import { Overview } from './views/overview.js?v=30db8cbe75';
-import { Buildings } from './views/buildings.js?v=30db8cbe75';
-import { Workers } from './views/workers.js?v=30db8cbe75';
-import { Reports } from './views/reports.js?v=30db8cbe75';
-import { Issues } from './views/issues.js?v=30db8cbe75';
-import { Invoices } from './views/invoices.js?v=30db8cbe75';
-import { Company } from './views/company.js?v=30db8cbe75';
-import { Templates } from './views/templates.js?v=30db8cbe75';
+import { render, useState, useEffect, useCallback, useMemo } from '../vendor/preact-htm.module.js?v=e23e5b5c61';
+import { html, Field, Input, Toggle, Select } from './ui.js?v=e23e5b5c61';
+import { Cloud, loadProjectConfig, saveProjectConfig, takeAuthRedirect, requestPasswordReset, setNewPassword } from './api.js?v=e23e5b5c61';
+import { makeT, LANGS, savedLang, saveLang } from './i18n.js?v=e23e5b5c61';
+import { Overview } from './views/overview.js?v=e23e5b5c61';
+import { Buildings } from './views/buildings.js?v=e23e5b5c61';
+import { Workers } from './views/workers.js?v=e23e5b5c61';
+import { Reports } from './views/reports.js?v=e23e5b5c61';
+import { Issues } from './views/issues.js?v=e23e5b5c61';
+import { Invoices } from './views/invoices.js?v=e23e5b5c61';
+import { Company } from './views/company.js?v=e23e5b5c61';
+import { Templates } from './views/templates.js?v=e23e5b5c61';
 
 const VIEWS = ['overview', 'buildings', 'workers', 'reports', 'invoices', 'issues', 'templates', 'company'];
 const REFRESH_MS = 60000;
+const IDLE_MS = 30 * 60000; // sign out after 30 min without use, unless "stay signed in" was chosen
+const ACTIVE_KEY = 'scleaning.web.active';
+const touchActive = () => { try { sessionStorage.setItem(ACTIVE_KEY, String(Date.now())); } catch { /* private mode */ } };
+const lastActive = () => { try { return Number(sessionStorage.getItem(ACTIVE_KEY)) || 0; } catch { return 0; } };
+const pageUrl = () => location.origin + location.pathname;
 // Simple line icons for the menu (24px grid, drawn with the text colour).
 const ICONS = {
   overview: 'M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z',
@@ -32,7 +37,13 @@ function monthRange(ym) {
 }
 const currentMonth = () => new Date().toISOString().slice(0, 7);
 
-function Login({ t, project, onDone }) {
+function ProjectFields({ t, url, setUrl, key, setKey }) {
+  return html`<${Field} label=${t('login.url')} hint=${t('login.urlHint')}><${Input} value=${url} onInput=${setUrl} placeholder="https://xxxx.supabase.co" required /><//>
+    <${Field} label=${t('login.key')} hint=${t('login.keyHint')}><${Input} value=${key} onInput=${setKey} required /><//>`;
+}
+const validUrl = (u) => /^https:\/\//.test(u.trim()) || /^http:\/\/(127\.0\.0\.1|localhost)/.test(u.trim());
+
+function Login({ t, project, onDone, notice }) {
   const [url, setUrl] = useState(project?.url || '');
   const [key, setKey] = useState(project?.key || '');
   const [email, setEmail] = useState('');
@@ -41,15 +52,30 @@ function Login({ t, project, onDone }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [showProject, setShowProject] = useState(!project);
+  const [forgot, setForgot] = useState(false);
+  const [info, setInfo] = useState('');
 
   const submit = async (e) => {
     e.preventDefault();
     setError('');
-    if (!/^https:\/\//.test(url.trim()) && !/^http:\/\/(127\.0\.0\.1|localhost)/.test(url.trim())) {
+    setInfo('');
+    if (!validUrl(url)) {
       setError(t('err.url'));
       return;
     }
     setBusy(true);
+    if (forgot) {
+      try {
+        await requestPasswordReset({ url, key: key.trim() }, email, pageUrl());
+        saveProjectConfig({ url: url.trim(), key: key.trim() });
+        setInfo(t('login.resetSent'));
+      } catch (err) {
+        setError(err.status === 429 ? t('login.resetLimit') : err.message === 'network' ? t('err.network') : t('err.login', err.message));
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
     try {
       const cfg = { url: url.trim(), key: key.trim() };
       const cloud = new Cloud(cfg);
@@ -65,20 +91,62 @@ function Login({ t, project, onDone }) {
 
   return html`<div class="login-wrap"><form class="card login" onSubmit=${submit}>
     <div class="brand big">S<span>Cleaning</span> Web</div>
-    <p class="muted">${t('login.intro')}</p>
+    ${notice && html`<div class="notice">${notice}</div>`}
+    <p class="muted">${forgot ? t('login.forgotIntro') : t('login.intro')}</p>
     ${showProject
-      ? html`<${Field} label=${t('login.url')} hint=${t('login.urlHint')}><${Input} value=${url} onInput=${setUrl} placeholder="https://xxxx.supabase.co" required /><//>
-        <${Field} label=${t('login.key')} hint=${t('login.keyHint')}><${Input} value=${key} onInput=${setKey} required /><//>`
+      ? html`<${ProjectFields} t=${t} url=${url} setUrl=${setUrl} key=${key} setKey=${setKey} />`
       : html`<p class="muted small">${t('login.project')}: ${url} · <a href="#" onClick=${(e) => { e.preventDefault(); setShowProject(true); }}>${t('common.change')}</a></p>`}
     <${Field} label=${t('login.email')}><${Input} type="email" value=${email} onInput=${setEmail} autocomplete="username" required /><//>
-    <${Field} label=${t('login.password')}><${Input} type="password" value=${password} onInput=${setPassword} autocomplete="current-password" required /><//>
-    <${Toggle} checked=${remember} onChange=${setRemember} label=${t('login.remember')} />
+    ${!forgot && html`<${Field} label=${t('login.password')}><${Input} type="password" value=${password} onInput=${setPassword} autocomplete="current-password" required /><//>
+      <${Toggle} checked=${remember} onChange=${setRemember} label=${t('login.remember')} />`}
     ${error && html`<div class="error">${error}</div>`}
-    <button class="btn" disabled=${busy}>${busy ? t('common.wait') : t('login.submit')}</button>
+    ${info && html`<div class="notice ok">${info}</div>`}
+    <button class="btn" disabled=${busy}>${busy ? t('common.wait') : forgot ? t('login.sendReset') : t('login.submit')}</button>
+    <button type="button" class="link small" onClick=${() => { setForgot(!forgot); setError(''); setInfo(''); }}>${forgot ? t('login.backToLogin') : t('login.forgot')}</button>
+  </form></div>`;
+}
+
+function ResetPassword({ t, project, token, onDone }) {
+  const [url, setUrl] = useState(project?.url || '');
+  const [key, setKey] = useState(project?.key || '');
+  const [pw, setPw] = useState('');
+  const [pw2, setPw2] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const submit = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (!validUrl(url)) return setError(t('err.url'));
+    if (pw.length < 8) return setError(t('login.pwShort'));
+    if (pw !== pw2) return setError(t('login.pwMismatch'));
+    setBusy(true);
+    try {
+      await setNewPassword({ url, key: key.trim() }, token, pw);
+      saveProjectConfig({ url: url.trim(), key: key.trim() });
+      onDone(t('login.pwChanged'));
+    } catch (err) {
+      setError(err.status === 401 || err.status === 403 ? t('login.linkExpired') : err.message === 'network' ? t('err.network') : t('err.login', err.message));
+    } finally {
+      setBusy(false);
+    }
+    return undefined;
+  };
+  return html`<div class="login-wrap"><form class="card login" onSubmit=${submit}>
+    <div class="brand big">S<span>Cleaning</span> Web</div>
+    <h2>${t('login.newPassword')}</h2>
+    ${!project && html`<${ProjectFields} t=${t} url=${url} setUrl=${setUrl} key=${key} setKey=${setKey} />`}
+    <${Field} label=${t('login.newPassword')}><${Input} type="password" value=${pw} onInput=${setPw} autocomplete="new-password" required /><//>
+    <${Field} label=${t('login.repeatPassword')}><${Input} type="password" value=${pw2} onInput=${setPw2} autocomplete="new-password" required /><//>
+    ${error && html`<div class="error">${error}</div>`}
+    <button class="btn" disabled=${busy}>${busy ? t('common.wait') : t('common.save')}</button>
+    <button type="button" class="link small" onClick=${() => onDone('')}>${t('common.cancel')}</button>
   </form></div>`;
 }
 
 function App() {
+  const [redirect] = useState(() => takeAuthRedirect());
+  const [recovery, setRecovery] = useState(redirect?.recoveryToken || null);
+  const [loginNotice, setLoginNotice] = useState(redirect?.error ? 'login.linkExpired' : '');
   const [lang, setLang] = useState(savedLang());
   const t = useMemo(() => makeT(lang), [lang]);
   const [project] = useState(loadProjectConfig());
@@ -86,7 +154,9 @@ function App() {
     const p = loadProjectConfig();
     if (!p) return null;
     const c = new Cloud(p);
-    return c.signedIn && c.companyId ? c : null;
+    if (!c.signedIn || !c.companyId) return null;
+    if (!c.remember && Date.now() - lastActive() > IDLE_MS) { c.signOut(); return null; }
+    return c;
   });
   const [view, setView] = useState(() => (VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview'));
   const [data, setData] = useState(null);
@@ -131,6 +201,29 @@ function App() {
     const id = setInterval(() => document.visibilityState === 'visible' && reload(), REFRESH_MS);
     return () => clearInterval(id);
   }, [reload]);
+  useEffect(() => {
+    if (!cloud || cloud.remember) return undefined;
+    let last = Date.now();
+    touchActive();
+    const mark = () => { if (Date.now() - last > 15000) touchActive(); last = Date.now(); };
+    const check = () => {
+      if (Date.now() - last > IDLE_MS) {
+        cloud.signOut();
+        setCloud(null);
+        setData(null);
+        setLoginNotice('login.idle');
+      }
+    };
+    const events = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
+    events.forEach((e) => window.addEventListener(e, mark, { passive: true }));
+    document.addEventListener('visibilitychange', check);
+    const id = setInterval(check, 30000);
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, mark));
+      document.removeEventListener('visibilitychange', check);
+      clearInterval(id);
+    };
+  }, [cloud]);
   useEffect(() => { if (location.hash.slice(1) !== view) location.hash = view; }, [view]);
   useEffect(() => {
     const onHash = () => {
@@ -167,9 +260,13 @@ function App() {
     }
   }, [notify, t]);
 
+  const langCorner = html`<div class="lang-corner"><${Select} value=${lang} onChange=${(l) => { saveLang(l); setLang(l); }} options=${LANGS} /></div>`;
+  if (recovery) {
+    return html`<${ResetPassword} t=${t} project=${project} token=${recovery} onDone=${(msg) => { setRecovery(null); setLoginNotice(msg); }} />${langCorner}`;
+  }
   if (!cloud) {
-    return html`<${Login} t=${t} project=${project} onDone=${(c) => { setCloud(c); setData(null); }} />
-      <div class="lang-corner"><${Select} value=${lang} onChange=${(l) => { saveLang(l); setLang(l); }} options=${LANGS} /></div>`;
+    const notice = loginNotice.startsWith('login.') ? t(loginNotice) : loginNotice;
+    return html`<${Login} t=${t} project=${loadProjectConfig() || project} notice=${notice} onDone=${(c) => { setCloud(c); setData(null); setLoginNotice(''); }} />${langCorner}`;
   }
 
   const counts = data && {

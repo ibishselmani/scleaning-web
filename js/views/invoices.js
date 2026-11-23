@@ -1,9 +1,9 @@
 // Invoices: read the app's billing book, download the frozen originals, mark sent / paid.
 // Issuing and cancelling stay in the app (they create legal documents with validated XRechnung).
-import { useState, useEffect, useCallback } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
-import { html, Pill, downloadText } from '../ui.js?v=30db8cbe75';
-import { csvEscape } from '../model.js?v=30db8cbe75';
-import { monthRows, monthTotals, invoiceStage, formatCents, setInvoicePaid, setInvoiceSent, documentsOf, base64ToBytes } from '../billing.js?v=30db8cbe75';
+import { useState, useEffect, useCallback } from '../../vendor/preact-htm.module.js?v=e23e5b5c61';
+import { html, Pill, downloadText } from '../ui.js?v=e23e5b5c61';
+import { csvEscape } from '../model.js?v=e23e5b5c61';
+import { monthRows, monthTotals, invoiceStage, formatCents, setInvoicePaid, setInvoiceSent, documentsOf, base64ToBytes } from '../billing.js?v=e23e5b5c61';
 
 const KIND = { DRAFT: '', ISSUED: 'warn', CONFIRMED_SENT: 'info', PAID: 'ok', CANCELLED: 'bad' };
 

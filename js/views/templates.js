@@ -1,8 +1,8 @@
-import { useState } from '../../vendor/preact-htm.module.js?v=30db8cbe75';
-import { html, Field, Input, Toggle, Modal } from '../ui.js?v=30db8cbe75';
-import { newTemplate, instantiateTasks } from '../model.js?v=30db8cbe75';
-import { TaskEditor } from './tasks.js?v=30db8cbe75';
-import { saveCompanyProfile } from './company.js?v=30db8cbe75';
+import { useState } from '../../vendor/preact-htm.module.js?v=e23e5b5c61';
+import { html, Field, Input, Toggle, Modal } from '../ui.js?v=e23e5b5c61';
+import { newTemplate, instantiateTasks } from '../model.js?v=e23e5b5c61';
+import { TaskEditor } from './tasks.js?v=e23e5b5c61';
+import { saveCompanyProfile } from './company.js?v=e23e5b5c61';
 
 const DAYS = [1, 2, 3, 4, 5, 6, 7];
 
